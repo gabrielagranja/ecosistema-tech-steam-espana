@@ -1,73 +1,878 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" class="h-full bg-slate-50">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f7f2">
-  <meta name="description" content="Guía clara para publicar una página web gratis con GitHub Pages, desde crear el repositorio hasta compartir tu enlace.">
-  <title>Publica tu web con GitHub Pages — Guía paso a paso</title>
-  <style>
-    :root{--ink:#14251f;--muted:#61716a;--paper:#f7f7f2;--white:#fff;--green:#176b4b;--lime:#c9f27b;--line:#e3e8df;--orange:#f1a45b;--shadow:0 20px 55px #193b2712}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}a{color:var(--green)}
-    .topbar{height:68px;display:flex;align-items:center;justify-content:space-between;max-width:1160px;padding:0 24px;margin:auto}.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:-.03em}.brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--ink);color:var(--lime);font-size:18px}.toplink{font-size:14px;text-decoration:none;font-weight:650}
-    .hero{max-width:1160px;margin:22px auto 72px;padding:42px 24px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--green);font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:800}.dot{height:8px;width:8px;background:#72b34d;border-radius:50%}h1{font-size:clamp(44px,6.5vw,76px);line-height:1.01;letter-spacing:-.065em;margin:20px 0 22px;max-width:720px}h1 em{font-style:normal;color:var(--green)}.hero-copy{font-size:18px;color:var(--muted);max-width:600px;margin:0 0 26px}.actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:13px 19px;background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:700}.button:hover{background:var(--green)}.quiet-link{font-weight:650;font-size:14px;text-decoration:none}.hero-card{position:relative;min-height:345px;background:var(--ink);color:#fff;border-radius:28px;padding:30px;overflow:hidden;box-shadow:var(--shadow)}.hero-card:after{content:"";position:absolute;width:260px;height:260px;border:1px solid #ffffff22;border-radius:50%;right:-72px;top:-84px;box-shadow:0 0 0 26px #ffffff08,0 0 0 54px #ffffff07}.browser-dots{display:flex;gap:6px;margin-bottom:46px}.browser-dots i{width:8px;height:8px;border-radius:50%;background:#64746c}.browser-dots i:first-child{background:#fa9278}.browser-dots i:nth-child(2){background:#f3cb66}.browser-dots i:nth-child(3){background:#8acb7c}.code-label{font-size:11px;color:#9aafa3;letter-spacing:.12em;text-transform:uppercase}.url{font-size:clamp(16px,2vw,21px);font-weight:650;margin-top:9px;word-break:break-word}.url span{color:var(--lime)}.deploy{display:flex;align-items:center;gap:9px;color:#d2e9d4;font-size:13px;margin-top:38px}.deploy b{height:8px;width:8px;border-radius:50%;background:#91db72;box-shadow:0 0 14px #91db72}
-    .layout{max-width:1160px;margin:0 auto;padding:0 24px 100px;display:grid;grid-template-columns:240px minmax(0,1fr);gap:74px}.sidebar{position:sticky;top:24px;align-self:start}.side-title{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#859189;font-weight:800;margin-bottom:16px}.progress{height:5px;background:#e4e9e0;border-radius:9px;margin-bottom:20px;overflow:hidden}.progress span{display:block;background:var(--green);height:100%;width:0;transition:width .3s}.navstep{display:flex;align-items:center;gap:12px;padding:9px 8px;margin:2px 0;border-radius:10px;text-decoration:none;color:#65736b;font-size:13px;font-weight:600}.navstep:hover,.navstep.active{background:#eaf0e8;color:var(--ink)}.navstep .num{display:grid;place-items:center;width:25px;height:25px;flex:none;border:1px solid #d8dfd5;border-radius:50%;font-size:11px}.navstep.done .num{background:var(--green);border-color:var(--green);color:white}.sidebar-note{margin-top:24px;border-top:1px solid var(--line);padding:17px 8px 0;color:var(--muted);font-size:12px}.sidebar-note strong{display:block;color:var(--ink);font-size:13px;margin-bottom:3px}
-    .content{min-width:0}.section-heading{margin:0 0 26px}.section-heading h2{font-size:30px;letter-spacing:-.04em;line-height:1.2;margin:0 0 8px}.section-heading p{margin:0;color:var(--muted)}.step{scroll-margin-top:24px;padding:28px 0 30px;border-top:1px solid var(--line);display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px}.step-badge{width:42px;height:42px;border:1px solid #dbe3d9;border-radius:15px;display:grid;place-items:center;color:var(--green);font-weight:800;font-size:14px;background:#fff}.step h3{font-size:21px;line-height:1.3;letter-spacing:-.025em;margin:3px 0 8px}.step p{margin:0 0 13px;color:var(--muted)}.step ol,.step ul{padding-left:20px;margin:10px 0 0}.step li{padding-left:4px;margin:7px 0}.step li::marker{color:#73a957}.hint{padding:14px 16px;background:#edf4e9;border-radius:13px;color:#364c3e;font-size:14px;margin-top:15px}.hint strong{color:var(--ink)}.hint.warn{background:#fff2e4;color:#715132}.inline-code{font: .92em ui-monospace,SFMono-Regular,Menlo,monospace;background:#edf0e9;padding:2px 6px;border-radius:5px;color:#264534}.checklist{display:grid;gap:9px;margin-top:16px}.check{display:flex;align-items:flex-start;gap:11px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px;color:#394b41;font-size:14px;cursor:pointer}.check input{accent-color:var(--green);margin-top:4px}.check:has(input:checked){color:#829087;text-decoration:line-through;background:#f2f5ef}.trouble{margin-top:34px;padding:24px;background:#eef1e9;border-radius:20px}.trouble h2{font-size:22px;letter-spacing:-.03em;margin:0 0 14px}.trouble details{border-top:1px solid #d9dfd4;padding:12px 0}.trouble summary{font-weight:700;cursor:pointer}.trouble details p{font-size:14px;color:var(--muted);margin:8px 0 2px}.footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:#78847b;font-size:12px}.footer a{font-weight:650;text-decoration:none}
-    @media(max-width:800px){.hero{grid-template-columns:1fr;gap:30px;margin-top:4px;padding-top:30px}.hero-card{min-height:270px}.browser-dots{margin-bottom:32px}.layout{grid-template-columns:1fr;gap:25px}.sidebar{position:static;display:flex;overflow-x:auto;gap:4px;padding-bottom:5px}.side-title,.progress,.sidebar-note{display:none}.navstep{white-space:nowrap;padding:7px}.navstep .num{width:24px;height:24px}.step{grid-template-columns:42px 1fr;gap:12px}}
-    @media(max-width:480px){.topbar{height:60px;padding:0 18px}.toplink{font-size:12px}.hero{padding:24px 18px 0;margin-bottom:52px}.hero-copy{font-size:16px}.hero-card{padding:24px;min-height:255px;border-radius:22px}.layout{padding:0 18px 70px}.section-heading h2{font-size:26px}.step{padding:23px 0}.step h3{font-size:19px}.step-badge{width:36px;height:36px;border-radius:12px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecosistema y Portales de Empleo Tech / STEAM en España</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 360px;
+            }
+        }
+    </style>
 </head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="#inicio" aria-label="GitHub Pages, inicio"><span class="brand-mark">↗</span><span>Publica tu web</span></a>
-    <a class="toplink" href="https://docs.github.com/es/pages" target="_blank" rel="noreferrer">Documentación oficial ↗</a>
-  </header>
-  <main id="inicio">
-    <section class="hero" aria-labelledby="title">
-      <div>
-        <span class="eyebrow"><span class="dot"></span> Tu primera publicación · 5 pasos</span>
-        <h1 id="title">De un archivo a<br>una web <em>pública.</em></h1>
-        <p class="hero-copy">Publica tu página con GitHub Pages y comparte una URL limpia. Es gratis para sitios estáticos y no necesitas instalar nada.</p>
-        <div class="actions"><a class="button" href="#paso-1">Empezar la guía <span aria-hidden="true">↓</span></a><a class="quiet-link" href="#lista">Ver lista de comprobación</a></div>
-      </div>
-      <div class="hero-card" aria-label="Ejemplo de URL publicada">
-        <div class="browser-dots"><i></i><i></i><i></i></div>
-        <div class="code-label">Tu sitio estará en</div>
-        <div class="url">https://<span>tu-usuario</span>.github.io/<br><span>nombre-proyecto</span>/</div>
-        <div class="deploy"><b></b> Sitio publicado · visible para todos</div>
-      </div>
-    </section>
-    <div class="layout">
-      <nav class="sidebar" aria-label="Pasos de la guía">
-        <div class="side-title">Tu progreso</div><div class="progress" aria-label="Progreso de la guía"><span id="progress-fill"></span></div>
-        <a class="navstep active" href="#paso-1"><span class="num">1</span> Cuenta</a>
-        <a class="navstep" href="#paso-2"><span class="num">2</span> Repositorio</a>
-        <a class="navstep" href="#paso-3"><span class="num">3</span> Archivo</a>
-        <a class="navstep" href="#paso-4"><span class="num">4</span> Publicación</a>
-        <a class="navstep" href="#paso-5"><span class="num">5</span> Tu enlace</a>
-        <div class="sidebar-note"><strong>Te llevará unos minutos</strong>Solo necesitas tu archivo <span class="inline-code">index.html</span>.</div>
-      </nav>
-      <article class="content">
-        <div class="section-heading"><h2>Guía paso a paso</h2><p>Sigue el orden y marca cada tarea al terminar.</p></div>
-        <section class="step" id="paso-1"><div class="step-badge">01</div><div><h3>Crea tu cuenta de GitHub</h3><p>Si ya tienes una cuenta, salta al siguiente paso.</p><ol><li>Abre <a href="https://github.com/" target="_blank" rel="noreferrer">github.com</a> y elige <strong>Sign up</strong>.</li><li>Introduce tu correo, crea una contraseña y escoge un nombre de usuario.</li><li>Completa la verificación y confirma tu correo.</li></ol><div class="hint"><strong>Consejo:</strong> tu nombre de usuario aparecerá en la dirección pública de tu sitio.</div></div></section>
-        <section class="step" id="paso-2"><div class="step-badge">02</div><div><h3>Crea un repositorio nuevo</h3><p>Un repositorio es la carpeta de GitHub donde guardarás los archivos de la web.</p><ol><li>Con sesión iniciada, pulsa <strong>New</strong> o el menú <strong>+</strong> → <strong>New repository</strong>.</li><li>Escribe un nombre sencillo, por ejemplo <span class="inline-code">portales-empleo-tech</span>.</li><li>Añade, si quieres, una descripción como «Explorador de portales de empleo tech en España».</li><li>Elige si será público o privado y pulsa <strong>Create repository</strong>.</li></ol><div class="hint"><strong>Visibilidad:</strong> GitHub Pages está disponible en repositorios públicos con GitHub Free. Publicar desde un repositorio privado depende del plan de GitHub; revisa la <a href="https://docs.github.com/es/pages/getting-started-with-github-pages/about-github-pages#github-pages-limits" target="_blank" rel="noreferrer">documentación de límites</a>.</div></div></section>
-        <section class="step" id="paso-3"><div class="step-badge">03</div><div><h3>Sube tu archivo <span class="inline-code">index.html</span></h3><p>El archivo de entrada debe estar en la raíz del repositorio.</p><ol><li>En la página del repositorio, pulsa <strong>uploading an existing file</strong>.</li><li>Arrastra <span class="inline-code">index.html</span> o selecciónalo desde tu ordenador.</li><li>Escribe un mensaje, por ejemplo «Primera versión del sitio», y pulsa <strong>Commit changes</strong>.</li></ol><div class="hint warn"><strong>Comprueba el nombre:</strong> debe ser exactamente <span class="inline-code">index.html</span>, en minúsculas, no <span class="inline-code">Index.html</span> ni <span class="inline-code">index.html.html</span>.</div></div></section>
-        <section class="step" id="paso-4"><div class="step-badge">04</div><div><h3>Activa GitHub Pages</h3><p>Indica a GitHub desde qué rama y carpeta debe servir la web.</p><ol><li>En el repositorio, abre <strong>Settings</strong> → <strong>Pages</strong> (en «Code and automation»).</li><li>En <strong>Build and deployment</strong>, selecciona <strong>Deploy from a branch</strong>.</li><li>En <strong>Branch</strong>, elige <span class="inline-code">main</span> (o <span class="inline-code">master</span>) y la carpeta <span class="inline-code">/ (root)</span>.</li><li>Pulsa <strong>Save</strong>.</li></ol><div class="hint">Si no aparece la rama, vuelve a la pestaña <strong>Code</strong> y confirma que el archivo ya se ha guardado.</div></div></section>
-        <section class="step" id="paso-5"><div class="step-badge">05</div><div><h3>Abre y comparte tu sitio</h3><p>GitHub compila y publica la página automáticamente.</p><ol><li>Espera unos minutos y vuelve a <strong>Settings → Pages</strong>.</li><li>Cuando esté listo, aparecerá el enlace del sitio. Para un repositorio normal, tendrá este formato:<br><span class="inline-code">https://tu-usuario.github.io/nombre-repositorio/</span></li><li>Pulsa <strong>Visit site</strong> y comprueba que se ve correctamente.</li></ol><div class="hint"><strong>Para actualizar:</strong> edita <span class="inline-code">index.html</span> en GitHub y confirma el cambio. Pages volverá a publicar el sitio automáticamente.</div></div></section>
-        <section class="step" id="lista"><div class="step-badge">✓</div><div><h3>Lista rápida antes de compartir</h3><p>Marca lo que ya has comprobado. Tu progreso se guarda mientras mantengas esta pestaña abierta.</p><div class="checklist"><label class="check"><input type="checkbox"> El repositorio contiene un archivo llamado <span class="inline-code">index.html</span> en la raíz.</label><label class="check"><input type="checkbox"> GitHub Pages está configurado con la rama y carpeta correctas.</label><label class="check"><input type="checkbox"> He abierto la URL pública y he comprobado la página.</label></div></div></section>
-        <section class="trouble" id="ayuda"><h2>¿Algo no funciona?</h2><details><summary>Veo un error 404</summary><p>Confirma que Pages está activado, que seleccionaste la rama donde subiste el archivo y que <span class="inline-code">index.html</span> está en la raíz. Tras guardar la configuración, espera unos minutos y vuelve a cargar la página.</p></details><details><summary>He cambiado el archivo, pero no veo la actualización</summary><p>Comprueba que el cambio se haya confirmado en la rama publicada y recarga el sitio. A veces el navegador conserva una copia anterior; prueba una recarga completa.</p></details><details><summary>¿Por qué mi URL tiene el nombre del repositorio?</summary><p>Los sitios de proyecto usan <span class="inline-code">https://tu-usuario.github.io/nombre-repositorio/</span>. El formato <span class="inline-code">https://tu-usuario.github.io/</span> se reserva para el repositorio especial llamado <span class="inline-code">tu-usuario.github.io</span>.</p></details></section>
-      </article>
-    </div>
-  </main>
-  <footer class="footer">Hecho para ayudarte a publicar tu primera web · <a href="https://docs.github.com/es/pages" target="_blank" rel="noreferrer">Consulta GitHub Pages ↗</a></footer>
-  <script>
-    const boxes=[...document.querySelectorAll('.check input')], fill=document.querySelector('#progress-fill');
-    boxes.forEach((box,i)=>{box.checked=sessionStorage.getItem('pages-check-'+i)==='1';box.addEventListener('change',()=>{sessionStorage.setItem('pages-check-'+i,box.checked?'1':'0');update()})});
-    function update(){fill.style.width=(boxes.filter(b=>b.checked).length/boxes.length*100)+'%'} update();
-    const links=[...document.querySelectorAll('.navstep')], sections=links.map(a=>document.querySelector(a.getAttribute('href')));
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.hash==='#'+entry.target.id))}}),{rootMargin:'-20% 0px -65% 0px'});
-    sections.forEach(section=>observer.observe(section));
-  </script>
+<body class="h-full text-slate-800 bg-slate-50 font-sans flex flex-col antialiased">
+
+    <!-- Chosen Palette: Warm Professional Slate & Slate Blue (Slate 50 bg, Blue 600 accent, Teal 600 secondary, Slate 900 text) -->
+
+    <!-- Application Structure Plan:
+        1. Header & Quick Overview Stats: High-level metrics on the recruitment landscape, salary visibility, and key vectors.
+        2. Main Navigation Tabs:
+           - Interactive Directory (Explorador de Portales): Multi-filter card grid (Experience, Mode, Region, Category) with direct links, transparency badges, and instant search.
+           - Recommended Matchmaker (Asistente "¿Dónde Buscar?"): Step-by-step interactive questionnaire mapping user level/preference to ideal portals.
+           - Salary & Market Benchmarks (Comparativa Salarial): Dynamic Chart.js visualizations comparing salary ranges by experience and employee vs freelance daily rates calculator.
+           - Strategic Analysis (Estrategia por Perfil): Key qualitative takeaways, legislation context, and tactics for Junior vs Senior vs Scientific/Design roles.
+        Rationally designed to allow candidates or recruiters to quickly filter by their exact needs (e.g. Junior + Remote, or Senior + Salary transparency) without scrolling through dense static text.
+    -->
+
+    <!-- Visualization & Content Choices:
+        - Job Portals Grid -> Goal: Filter & Compare -> Interactive Cards + Custom Multi-filter Tag system -> JS Filter -> Direct UI cards with direct anchor links.
+        - Salary Comparison -> Goal: Compare/Inform -> Horizontal Bar Chart (Chart.js) -> Toggle between Gross Annual Salary & Freelance Day Rate -> Chart.js Canvas (No SVG).
+        - Profile Matchmaker -> Goal: Guide/Organize -> Interactive Wizard -> Dynamic Result recommendation cards.
+        - Confirming NO SVG used, NO Mermaid JS used. Standard Unicode badges and CSS components used throughout.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Top Navigation Header -->
+    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center py-4 gap-4">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">⚡</span>
+                    <div>
+                        <h1 class="text-xl font-bold text-white tracking-tight">Ecosistema Tech & STEAM España</h1>
+                        <p class="text-xs text-slate-400">Guía Interactiva y Plataformas de Reclutamiento</p>
+                    </div>
+                </div>
+                <nav class="flex flex-wrap gap-2 text-sm font-medium">
+                    <button onclick="switchTab('explorer')" id="tab-explorer" class="tab-btn px-3 py-1.5 rounded-lg bg-blue-600 text-white transition-colors">
+                        🔍 Explorador
+                    </button>
+                    <button onclick="switchTab('wizard')" id="tab-wizard" class="tab-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors">
+                        🎯 Asistente
+                    </button>
+                    <button onclick="switchTab('salaries')" id="tab-salaries" class="tab-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors">
+                        📊 Salarios
+                    </button>
+                    <button onclick="switchTab('strategy')" id="tab-strategy" class="tab-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition-colors">
+                        📚 Análisis
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- TAB 1: EXPLORADOR DE PORTALES -->
+        <section id="view-explorer" class="space-y-6">
+            <!-- Section Intro Paragraph -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-900 mb-2">Directorio Interactivo de Portales Tecnológicos y STEAM</h2>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Esta sección permite explorar y filtrar de forma exhaustiva los mejores canales de empleo técnico en España e internacionalmente. 
+                    Utiliza los filtros de experiencia, modalidad de trabajo y grado de transparencia salarial para identificar las plataformas que mejor se ajustan a tus metas profesionales o necesidades de contratación.
+                </p>
+            </div>
+
+            <!-- Filters Bar -->
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                    <!-- Search Input -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Buscar Portal o Tecno</label>
+                        <input type="text" id="search-input" oninput="applyFilters()" placeholder="Ej. Manfred, Joppy, IA, React..." class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Filter Experience -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Nivel de Experiencia</label>
+                        <select id="filter-experience" onchange="applyFilters()" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="all">Todos los niveles</option>
+                            <option value="junior">Junior / Sin experiencia</option>
+                            <option value="mid">Mid-level (2-5 años)</option>
+                            <option value="senior">Senior / Lead (+5 años)</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter Mode -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Modalidad de Trabajo</label>
+                        <select id="filter-mode" onchange="applyFilters()" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="all">Todas las modalidades</option>
+                            <option value="remote">Remoto 100%</option>
+                            <option value="hybrid">Híbrido</option>
+                            <option value="presencial">Presencial</option>
+                        </select>
+                    </div>
+
+                    <!-- Filter Category -->
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Especialidad / Enfoque</label>
+                        <select id="filter-category" onchange="applyFilters()" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="all">Todas las categorías</option>
+                            <option value="tech_national">Tech Nacional / Ibérico</option>
+                            <option value="remote_global">Remote-First Internacional</option>
+                            <option value="entry_junior">Cantera & Primer Empleo</option>
+                            <option value="reverse_recruiting">Reclutamiento Inverso</option>
+                            <option value="steam_science">STEAM, Ciencia & UX/UI</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center pt-2 border-t border-slate-100 text-xs text-slate-500">
+                    <div>
+                        Mostrando <span id="portal-count" class="font-bold text-slate-800">0</span> portales
+                    </div>
+                    <button onclick="resetFilters()" class="text-blue-600 hover:underline font-medium">Limpiar Filtros</button>
+                </div>
+            </div>
+
+            <!-- Portals Grid -->
+            <div id="portals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Cards injected by JavaScript -->
+            </div>
+        </section>
+
+        <!-- TAB 2: ASISTENTE INTERACTIVO (MATCHMAKER) -->
+        <section id="view-wizard" class="hidden space-y-6">
+            <!-- Section Intro Paragraph -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-900 mb-2">Asistente de Recomendación de Canales</h2>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Responde a tres preguntas clave sobre tu perfil profesional y tus preferencias para obtener una lista personalizada de las plataformas con mayor probabilidad de éxito para tu búsqueda laboral.
+                </p>
+            </div>
+
+            <div class="bg-white p-8 rounded-xl border border-slate-200 shadow-sm max-w-3xl mx-auto space-y-6">
+                <!-- Step 1 -->
+                <div>
+                    <label class="block text-sm font-bold text-slate-800 mb-3">1. ¿Cuál es tu experiencia profesional en el área?</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button type="button" onclick="selectWizard('exp', 'junior', this)" class="wiz-exp p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Junior / Sin Exp.</div>
+                            <div class="text-xs text-slate-500 mt-1">Bootcamp, FP, Grado o &lt;2 años</div>
+                        </button>
+                        <button type="button" onclick="selectWizard('exp', 'mid', this)" class="wiz-exp p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Mid-Level</div>
+                            <div class="text-xs text-slate-500 mt-1">2 a 5 años de experiencia</div>
+                        </button>
+                        <button type="button" onclick="selectWizard('exp', 'senior', this)" class="wiz-exp p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Senior / Tech Lead</div>
+                            <div class="text-xs text-slate-500 mt-1">Más de 5 años o especialización</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div>
+                    <label class="block text-sm font-bold text-slate-800 mb-3">2. ¿Qué modalidad de trabajo priorizas?</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button type="button" onclick="selectWizard('mode', 'remote', this)" class="wiz-mode p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Remoto 100%</div>
+                            <div class="text-xs text-slate-500 mt-1">Trabajo desde cualquier lugar</div>
+                        </button>
+                        <button type="button" onclick="selectWizard('mode', 'hybrid', this)" class="wiz-mode p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Híbrido / Presencial</div>
+                            <div class="text-xs text-slate-500 mt-1">Oficina en España + teletrabajo</div>
+                        </button>
+                        <button type="button" onclick="selectWizard('mode', 'any', this)" class="wiz-mode p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Indiferente</div>
+                            <div class="text-xs text-slate-500 mt-1">Abierto a cualquier formato</div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div>
+                    <label class="block text-sm font-bold text-slate-800 mb-3">3. ¿Cuál es tu disciplina principal?</label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button type="button" onclick="selectWizard('field', 'software', this)" class="wiz-field p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Software, Cloud & IA</div>
+                            <div class="text-xs text-slate-500 mt-1">Dev, DevOps, Data, SysAdmin</div>
+                        </button>
+                        <button type="button" onclick="selectWizard('field', 'design', this)" class="wiz-field p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Diseño UI/UX y Arte</div>
+                            <div class="text-xs text-slate-500 mt-1">Producto digital, 3D, Frontend</div>
+                        </button>
+                        <button type="button" onclick="selectWizard('field', 'science', this)" class="wiz-field p-4 rounded-xl border text-left hover:border-blue-500 transition border-slate-200">
+                            <div class="font-bold text-slate-900 text-sm">Ciencia e Investigación</div>
+                            <div class="text-xs text-slate-500 mt-1">I+D+i, Académico, Matemáticas</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-slate-100 flex justify-end">
+                    <button onclick="calculateWizard()" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-sm transition">
+                        Generar Recomendación Personalizada
+                    </button>
+                </div>
+            </div>
+
+            <!-- Wizard Results Container -->
+            <div id="wizard-results" class="hidden space-y-4 max-w-4xl mx-auto">
+                <h3 class="text-md font-bold text-slate-900 uppercase tracking-wider text-slate-500 text-center">Portales Recomendados Para Ti</h3>
+                <div id="wizard-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+        </section>
+
+        <!-- TAB 3: BENCHMARK SALARIAL & CALCULADORA -->
+        <section id="view-salaries" class="hidden space-y-6">
+            <!-- Section Intro Paragraph -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-900 mb-2">Análisis de Retribución y Modalidades Contractuales</h2>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Compara los rangos retributivos habituales en el mercado tecnológico español según la experiencia acumulada. 
+                    Utiliza la calculadora interactiva para contrastar la retribución bruta anual en contrato por cuenta ajena frente a la tarifa día equivalente como profesional independiente (contractor/freelance).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Chart Box -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-md font-bold text-slate-900">Salario Bruto Anual Medio (€/año en España)</h3>
+                            <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Datos Actualizados</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-4">
+                            Valores orientativos para contratos laborales bajo normativa española (Ley de Teletrabajo).
+                        </p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="salaryChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Interactive Salary Calculator -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+                    <h3 class="text-md font-bold text-slate-900">Calculadora de Equivalencia Freelance vs Cuenta Ajena</h3>
+                    <p class="text-xs text-slate-500">
+                        Ajusta el salario bruto deseado o la tarifa día orientativa para estimar la equivalencia de mercado en España.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="font-semibold text-slate-700">Salario Bruto Anual deseado:</span>
+                                <span id="calc-salary-val" class="font-bold text-blue-600">45.000 €</span>
+                            </div>
+                            <input type="range" id="calc-salary-range" min="20000" max="90000" step="2500" value="45000" oninput="updateCalculator()" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-600">Tarifa Día Orientativa (Freelance):</span>
+                                <span id="calc-day-rate" class="text-sm font-bold text-slate-900">380 € – 550 € / día</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-600">Tarifa Hora Aproximada:</span>
+                                <span id="calc-hour-rate" class="text-sm font-bold text-teal-700">45 € – 70 € / h</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-600">Nivel Habitual Asociado:</span>
+                                <span id="calc-level-tag" class="text-xs bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded">Desarrollador Mid-Level</span>
+                            </div>
+                        </div>
+
+                        <div class="text-xs text-slate-500 bg-amber-50 p-3 rounded-lg border border-amber-200">
+                            💡 <strong>Nota legal y de costes:</strong> Las tarifas freelance consideran la cobertura de costes operativos, seguro social autónomo, vacaciones no pagadas y periodos entre proyectos.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: ANÁLISIS ESTRATÉGICO & CONCLUSIONES -->
+        <section id="view-strategy" class="hidden space-y-6">
+            <!-- Section Intro Paragraph -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h2 class="text-lg font-bold text-slate-900 mb-2">Estrategias de Búsqueda y Marco Regulatorio</h2>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Accede al resumen cualitativo del mercado laboral tecnológico español. 
+                    Aprende cómo optimizar tu estrategia según tu nivel de experiencia, la adaptación a la Ley del Teletrabajo y la selección del canal idóneo para perfiles científicos y creativos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Strategic Card 1 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 text-blue-600">
+                        <span class="text-xl">🎓</span>
+                        <h3 class="font-bold text-slate-900">Estrategia para Perfiles Junior</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Los candidatos con menor experiencia enfrentan el filtrado estricto de los sistemas ATS corporativos. Para superarlo:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                        <li>Privilegia plataformas con <strong>evaluación objetiva de código</strong> como <em>Welcome to the Jungle</em>.</li>
+                        <li>Utiliza la iniciativa <em>"Helping Juniors"</em> de Manfred para evitar procesos descalificatorios automatizados.</li>
+                        <li>Aprovecha ofertas de cantera e integración en consultoras a través de agregadores masivos (Indeed, InfoJobs).</li>
+                        <li>Construye un porfolio acreditable mediante pequeños proyectos freelance en Freelancer.es.</li>
+                    </ul>
+                </div>
+
+                <!-- Strategic Card 2 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 text-teal-600">
+                        <span class="text-xl">🚀</span>
+                        <h3 class="font-bold text-slate-900">Estrategia para Perfiles Senior</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        A partir de 3 a 5 años de experiencia, la postulación masiva tradicional pierde efectividad. Se recomienda:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                        <li>Adoptar el <strong>reclutamiento inverso</strong> en plataformas como <em>Honeypot.io</em> o <em>Joppy</em> donde las empresas inician la oferta.</li>
+                        <li>Exigir <strong>transparencia salarial estricta</strong> desde la primera interacción (Manfred).</li>
+                        <li>Optimizar palabras clave de arquitectura Cloud, DevOps e IA en LinkedIn para activar el <em>inbound recruiting</em>.</li>
+                        <li>Explorar posiciones 100% remotas para empresas globales en USD/EUR (We Work Remotely, Remote OK).</li>
+                    </ul>
+                </div>
+
+                <!-- Strategic Card 3 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 text-purple-600">
+                        <span class="text-xl">🔬</span>
+                        <h3 class="font-bold text-slate-900">Ecosistema STEAM e Investigación</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Las disciplinas científicas, la ingeniería avanzada y el diseño interactivo poseen canales propios:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                        <li><strong>I+D+i y Ciencia:</strong> Centra tu actividad en <em>EURAXESS España</em> para becas, postdocs y plazas públicas/privadas.</li>
+                        <li><strong>Diseño UI/UX y Arte 3D:</strong> El porfolio prima sobre el CV tradicional. Utiliza <em>Behance Jobs</em> y <em>Dribbble Jobs</em>.</li>
+                        <li><strong>Ciberseguridad y Datos:</strong> InfoJobs concentra un volumen elevado (+146.000 vacantes al año) en estas áreas.</li>
+                    </ul>
+                </div>
+
+                <!-- Strategic Card 4 -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="flex items-center space-x-2 text-amber-600">
+                        <span class="text-xl">⚖️</span>
+                        <h3 class="font-bold text-slate-900">Marco Legal y Teletrabajo en España</h3>
+                    </div>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        Puntos clave sobre la regulación laboral aplicable en España:
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
+                        <li><strong>Ley del Teletrabajo:</strong> Exige a la empresa asumir costes de equipamiento y suministros para jornadas a distancia &gt;30%.</li>
+                        <li><strong>Contratación Internacional:</strong> Empresas sin sede en España emplean EORs (Deel, Remote) o contratación por cuenta propia (autónomo/contractor).</li>
+                        <li><strong>Modelos Híbridos:</strong> Grandes corporaciones (Telefónica, BBVA, Indra) estructuran presencia parcial obligatoria en Madrid/Barcelona.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 py-6 mt-8">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+            <p>Panorama del Mercado de Selección Tech y STEAM en España</p>
+            <p class="text-slate-500">Diseñado para la exploración interactiva de canales de empleo y métricas retributivas.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Data and Core Logic -->
+    <script>
+        // Source Data Array of Portals
+        const portalsData = [
+            {
+                id: 'manfred',
+                name: 'Manfred',
+                url: 'https://www.getmanfred.com',
+                region: 'España y Europa',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'tech_national',
+                transparency: 'Obligatoria (100%)',
+                transparencyLevel: 'high',
+                tags: ['Salario Obligatorio', 'Helping Juniors', 'Dev & Cloud'],
+                desc: 'Plataforma líder en transparencia. Muestra obligatoriamente la horquilla salarial en todas sus vacantes y cuenta con programas para talento emergente.'
+            },
+            {
+                id: 'joppy',
+                name: 'Joppy',
+                url: 'https://www.joppy.me',
+                region: 'España',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'reverse_recruiting',
+                transparency: 'Alta (Pública)',
+                transparencyLevel: 'high',
+                tags: ['Matching Algorítmico', 'Chat Directo', 'Anonimato'],
+                desc: 'Matching algorítmico y chat directo con los equipos de contratación sin intermediarios ni CV tradicional. Más de 125.000 profesionales registrados.'
+            },
+            {
+                id: 'tecnoempleo',
+                name: 'Tecnoempleo',
+                url: 'https://www.tecnoempleo.com',
+                region: 'España',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid', 'presencial'],
+                category: 'tech_national',
+                transparency: 'Variable según oferta',
+                transparencyLevel: 'med',
+                tags: ['Filtro Ley Teletrabajo', 'Software Clásico', '.NET/Java'],
+                desc: 'Portal especializado decano en el sector IT español. Búsqueda estructurada por tecnologías y adaptado al marco normativo de teletrabajo.'
+            },
+            {
+                id: 'landingjobs',
+                name: 'Landing.jobs',
+                url: 'https://landing.jobs',
+                region: 'España, Portugal y UE',
+                expLevels: ['mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'tech_national',
+                transparency: 'Elevada',
+                transparencyLevel: 'high',
+                tags: ['Eje Ibérico', 'Relocation UE', 'Transparente'],
+                desc: 'Enfocado en el eje ibérico. Proporciona ayuda y soporte para la reubicación de profesionales técnicos dentro de la Unión Europea.'
+            },
+            {
+                id: 'weworkremotely',
+                name: 'We Work Remotely',
+                url: 'https://weworkremotely.com',
+                region: 'Global / EMEA',
+                expLevels: ['mid', 'senior'],
+                modes: ['remote'],
+                category: 'remote_global',
+                transparency: 'Media / Alta',
+                transparencyLevel: 'med',
+                tags: ['Filtro Zona Horaria EMEA', 'Software', 'DevOps'],
+                desc: 'El mayor repositorio global de empleo 100% remoto con herramientas de segmentación por zonas horarias europeas.'
+            },
+            {
+                id: 'remoteok',
+                name: 'Remote OK',
+                url: 'https://remoteok.com',
+                region: 'Global',
+                expLevels: ['mid', 'senior'],
+                modes: ['remote'],
+                category: 'remote_global',
+                transparency: 'Alta (USD/EUR)',
+                transparencyLevel: 'high',
+                tags: ['Salarios Dólares/Euros', 'AI & Data', 'Global'],
+                desc: 'Referente internacional con gran densidad de oportunidades en Inteligencia Artificial, Data Science e ingeniería de software.'
+            },
+            {
+                id: 'wellfound',
+                name: 'WellFound (AngelList)',
+                url: 'https://wellfound.com',
+                region: 'Global',
+                expLevels: ['mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'remote_global',
+                transparency: 'Alta',
+                transparencyLevel: 'high',
+                tags: ['Startups', 'Stock Options', 'Full-Stack'],
+                desc: 'Portal clave para incorporarse a startups tecnológicas e hipergrowth. Permite acceder a paquetes mixtos con salario y stock options.'
+            },
+            {
+                id: 'getonboard',
+                name: 'GetOnBoard',
+                url: 'https://www.getonbrd.com',
+                region: 'España y LATAM',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'remote_global',
+                transparency: 'Media',
+                transparencyLevel: 'med',
+                tags: ['Español', 'Dev & UX/UI', 'Startups'],
+                desc: 'Conecta empresas tecnológicas de España y Latinoamérica publicando vacantes en español para desarrollo, diseño y analítica.'
+            },
+            {
+                id: 'flexjobs',
+                name: 'FlexJobs',
+                url: 'https://www.flexjobs.com',
+                region: 'Global',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'remote_global',
+                transparency: 'Media',
+                transparencyLevel: 'med',
+                tags: ['Ofertas Verificadas', 'Suscripción', 'Multisector'],
+                desc: 'Plataforma que verifica manualmente cada anuncio para garantizar la autenticidad de las ofertas remotas y evitar fraudes.'
+            },
+            {
+                id: 'welcometothejungle',
+                name: 'Welcome to the Jungle',
+                url: 'https://www.welcometothejungle.com',
+                region: 'España y Europa',
+                expLevels: ['junior', 'mid'],
+                modes: ['remote', 'hybrid'],
+                category: 'entry_junior',
+                transparency: 'Media / Alta',
+                transparencyLevel: 'med',
+                tags: ['0+ Años Exp.', 'Pruebas Prácticas', 'Empresas Producto'],
+                desc: 'Destaca por albergar empresas de producto que ofrecen puestos Junior (0+ años) evaluados mediante pruebas de código objetivas.'
+            },
+            {
+                id: 'indeed',
+                name: 'Indeed España',
+                url: 'https://es.indeed.com',
+                region: 'España',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid', 'presencial'],
+                category: 'entry_junior',
+                transparency: 'Variable',
+                transparencyLevel: 'low',
+                tags: ['Gran Volumen', 'Cantera Consultoras', 'Primer Empleo'],
+                desc: 'Agregador de gran volumen. Esencial para encontrar vacantes de primer empleo publicadas por consultoras e integradoras (Indra, Minsait).'
+            },
+            {
+                id: 'infojobs',
+                name: 'InfoJobs (Sección STEAM)',
+                url: 'https://www.infojobs.net',
+                region: 'España',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid', 'presencial'],
+                category: 'steam_science',
+                transparency: 'Variable',
+                transparencyLevel: 'low',
+                tags: ['+146.000 Vacantes STEAM', 'Ciberseguridad', 'Datos'],
+                desc: 'Mayor portal generalista nacional con más de 146.000 ofertas anuales en ingenierías, ciberseguridad y matemáticas aplicadas.'
+            },
+            {
+                id: 'freelancer',
+                name: 'Freelancer.es',
+                url: 'https://www.freelancer.es',
+                region: 'España / Global',
+                expLevels: ['junior'],
+                modes: ['remote'],
+                category: 'entry_junior',
+                transparency: 'Fijada por Proyecto',
+                transparencyLevel: 'med',
+                tags: ['Porfolio Inicial', 'Microproyectos', 'Autónomo'],
+                desc: 'Ideal para perfiles junior o recién titulados que buscan construir un porfolio verificable realizando proyectos independientes.'
+            },
+            {
+                id: 'honeypot',
+                name: 'Honeypot.io',
+                url: 'https://www.honeypot.io',
+                region: 'Europa',
+                expLevels: ['mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'reverse_recruiting',
+                transparency: 'Alta (Previo a Entrevista)',
+                transparencyLevel: 'high',
+                tags: ['Reclutamiento Inverso', 'Europa', 'DevOps & Dev'],
+                desc: 'Plataforma de reclutamiento inverso en Europa. Creas tu perfil y las empresas te envían propuestas con salario explícito.'
+            },
+            {
+                id: 'linkedin',
+                name: 'LinkedIn Jobs',
+                url: 'https://www.linkedin.com/jobs',
+                region: 'Global / España',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid', 'presencial'],
+                category: 'tech_national',
+                transparency: 'Variable',
+                transparencyLevel: 'med',
+                tags: ['Inbound Recruiting', 'Networking', 'Estándar Global'],
+                desc: 'La red profesional imprescindible. La optimización del perfil con palabras clave atrae ofertas directas de reclutadores.'
+            },
+            {
+                id: 'euraxess',
+                name: 'EURAXESS España',
+                url: 'https://www.euraxess.es',
+                region: 'España y UE',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['hybrid', 'presencial'],
+                category: 'steam_science',
+                transparency: 'Alta (Según Convocatoria)',
+                transparencyLevel: 'high',
+                tags: ['I+D+i', 'Investigación Científica', 'Becas UE'],
+                desc: 'Portal oficial de la Comisión Europea para publicar contratos de investigación, plazas académicas y becas doctorales en España.'
+            },
+            {
+                id: 'behance',
+                name: 'Behance Jobs',
+                url: 'https://www.behance.net/joblist',
+                region: 'Global',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote', 'hybrid'],
+                category: 'steam_science',
+                transparency: 'Media',
+                transparencyLevel: 'med',
+                tags: ['Diseño UI/UX', 'Arte Digital', 'Basado en Porfolio'],
+                desc: 'Sección de empleo de Adobe donde agencias e internacionales seleccionan diseñadores y artistas basándose en sus proyectos gráficos.'
+            },
+            {
+                id: 'dribbble',
+                name: 'Dribbble Jobs',
+                url: 'https://dribbble.com/jobs',
+                region: 'Global',
+                expLevels: ['junior', 'mid', 'senior'],
+                modes: ['remote'],
+                category: 'steam_science',
+                transparency: 'Media / Alta',
+                transparencyLevel: 'med',
+                tags: ['Product Design', 'UI/UX Remote', 'Branding'],
+                desc: 'Canal de referencia global para vacantes de diseño de producto digital, interacción e interfaces para marcas tecnológicas.'
+            }
+        ];
+
+        // Wizard selections state
+        let wizardState = { exp: '', mode: '', field: '' };
+
+        // Tab Switching Function
+        function switchTab(tabId) {
+            ['explorer', 'wizard', 'salaries', 'strategy'].forEach(id => {
+                document.getElementById(`view-${id}`).classList.add('hidden');
+                document.getElementById(`tab-${id}`).classList.remove('bg-blue-600', 'text-white');
+                document.getElementById(`tab-${id}`).classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            document.getElementById(`view-${tabId}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
+            activeBtn.classList.add('bg-blue-600', 'text-white');
+
+            if(tabId === 'salaries') {
+                renderSalaryChart();
+            }
+        }
+
+        // Apply filters to portals
+        function applyFilters() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const exp = document.getElementById('filter-experience').value;
+            const mode = document.getElementById('filter-mode').value;
+            const cat = document.getElementById('filter-category').value;
+
+            const filtered = portalsData.filter(p => {
+                const matchesQuery = p.name.toLowerCase().includes(query) ||
+                                     p.desc.toLowerCase().includes(query) ||
+                                     p.tags.some(t => t.toLowerCase().includes(query));
+                const matchesExp = exp === 'all' || p.expLevels.includes(exp);
+                const matchesMode = mode === 'all' || p.modes.includes(mode);
+                const matchesCat = cat === 'all' || p.category === cat;
+
+                return matchesQuery && matchesExp && matchesMode && matchesCat;
+            });
+
+            renderPortalsGrid(filtered);
+        }
+
+        function resetFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('filter-experience').value = 'all';
+            document.getElementById('filter-mode').value = 'all';
+            document.getElementById('filter-category').value = 'all';
+            applyFilters();
+        }
+
+        // Render Portals Grid
+        function renderPortalsGrid(data) {
+            const grid = document.getElementById('portals-grid');
+            document.getElementById('portal-count').innerText = data.length;
+
+            if (data.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-white p-8 rounded-xl border border-slate-200 text-center text-slate-500">
+                        No se encontraron portales que coincidan con los filtros seleccionados.
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = data.map(p => `
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-bold text-slate-900 text-base">${p.name}</h3>
+                            <span class="text-xs px-2 py-0.5 rounded font-semibold ${
+                                p.transparencyLevel === 'high' ? 'bg-emerald-100 text-emerald-800' :
+                                p.transparencyLevel === 'med' ? 'bg-blue-100 text-blue-800' : 'bg-slate-100 text-slate-600'
+                            }">
+                                ${p.transparency}
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 mb-3">${p.region}</p>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-3">${p.desc}</p>
+                        
+                        <div class="flex flex-wrap gap-1 mb-3">
+                            ${p.tags.map(t => `<span class="text-[10px] bg-slate-100 text-slate-700 px-2 py-0.5 rounded">${t}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex justify-between items-center">
+                        <span class="text-[11px] text-slate-400 font-medium">
+                            ${p.modes.map(m => m === 'remote' ? '🌐 Remoto' : m === 'hybrid' ? '🏢 Híbrido' : '📍 Presencial').join(' • ')}
+                        </span>
+                        <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-xs font-semibold text-blue-600 hover:text-blue-800">
+                            Visitar Portal ↗
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Wizard Logic
+        function selectWizard(type, val, btn) {
+            wizardState[type] = val;
+            const siblings = document.querySelectorAll(`.wiz-${type}`);
+            siblings.forEach(s => s.classList.remove('border-blue-500', 'bg-blue-50'));
+            btn.classList.add('border-blue-500', 'bg-blue-50');
+        }
+
+        function calculateWizard() {
+            if(!wizardState.exp || !wizardState.mode || !wizardState.field) {
+                alert('Por favor, responde a las 3 preguntas antes de continuar.');
+                return;
+            }
+
+            let matches = portalsData.filter(p => {
+                let expMatch = p.expLevels.includes(wizardState.exp);
+                let modeMatch = wizardState.mode === 'any' || p.modes.includes(wizardState.mode);
+                let fieldMatch = true;
+
+                if(wizardState.field === 'design') {
+                    fieldMatch = p.category === 'steam_science' || p.tags.some(t => t.toLowerCase().includes('ux') || t.toLowerCase().includes('diseño'));
+                } else if(wizardState.field === 'science') {
+                    fieldMatch = p.category === 'steam_science' || p.id === 'infojobs';
+                }
+
+                return expMatch && modeMatch && fieldMatch;
+            });
+
+            if(matches.length < 2) {
+                matches = portalsData.filter(p => p.expLevels.includes(wizardState.exp));
+            }
+
+            const resultsDiv = document.getElementById('wizard-results');
+            const cardsDiv = document.getElementById('wizard-cards');
+
+            cardsDiv.innerHTML = matches.slice(0, 4).map(p => `
+                <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-bold text-slate-900">${p.name}</h4>
+                        <span class="text-xs bg-blue-100 text-blue-800 font-semibold px-2 py-0.5 rounded">Recomendado</span>
+                    </div>
+                    <p class="text-xs text-slate-600">${p.desc}</p>
+                    <div class="pt-2 flex justify-between items-center">
+                        <span class="text-xs text-slate-500">${p.transparency}</span>
+                        <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 hover:underline">Acceder ↗</a>
+                    </div>
+                </div>
+            `).join('');
+
+            resultsDiv.classList.remove('hidden');
+        }
+
+        // Salary Calculator Update
+        function updateCalculator() {
+            const val = parseInt(document.getElementById('calc-salary-range').value);
+            document.getElementById('calc-salary-val').innerText = val.toLocaleString('es-ES') + ' €';
+
+            let minDay, maxDay, levelTag;
+
+            if(val <= 32000) {
+                minDay = 250; maxDay = 400;
+                levelTag = 'Programador / Técnico Junior (0-2 años)';
+            } else if(val <= 48000) {
+                minDay = 400; maxDay = 600;
+                levelTag = 'Desarrollador Mid-Level (2-5 años)';
+            } else if(val <= 70000) {
+                minDay = 600; maxDay = 900;
+                levelTag = 'Ingeniero Senior / Tech Lead (+5 años)';
+            } else {
+                minDay = 700; maxDay = 1100;
+                levelTag = 'Especialista IA / Arquitecto Cloud';
+            }
+
+            document.getElementById('calc-day-rate').innerText = `${minDay} € – ${maxDay} € / día`;
+            document.getElementById('calc-hour-rate').innerText = `${Math.round(minDay/8)} € – ${Math.round(maxDay/8)} € / h`;
+            document.getElementById('calc-level-tag').innerText = levelTag;
+        }
+
+        // Chart Rendering Logic (Chart.js)
+        let chartInstance = null;
+
+        function renderSalaryChart() {
+            const canvas = document.getElementById('salaryChart');
+            if(!canvas) return;
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            const ctx = canvas.getContext('2d');
+            chartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Junior (0-2 años)',
+                        'Mid-Level (2-5 años)',
+                        'Senior / Lead (+5 años)',
+                        'Especialista IA / Cloud'
+                    ],
+                    datasets: [
+                        {
+                            label: 'Mínimo (€/año)',
+                            data: [22000, 35000, 50000, 65000],
+                            backgroundColor: '#94a3b8',
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Máximo (€/año)',
+                            data: [32000, 48000, 75000, 85000],
+                            backgroundColor: '#2563eb',
+                            borderRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { size: 11 } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.dataset.label}: ${context.raw.toLocaleString('es-ES')} €`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return value / 1000 + 'k €';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initializer
+        window.addEventListener('DOMContentLoaded', () => {
+            renderPortalsGrid(portalsData);
+            updateCalculator();
+        });
+    </script>
 </body>
 </html>
