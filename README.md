@@ -27,6 +27,4 @@ La inclusión de una empresa o plataforma no implica recomendación, patrocinio,
 
 El proyecto está en construcción. Se están revisando los enlaces, las fuentes, los criterios de clasificación y los datos presentados. Las sugerencias y correcciones son bienvenidas mediante [Issues](https://github.com/gabrielagranja/ecosistema-tech-steam-espana/issues).
 
-## Publicación
 
-La web se publica con GitHub Pages desde `index.html` en la rama `main`.
